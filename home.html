@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>বাংলাদেশ আবহাওয়া 🌦️</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Check login -->
+  <script>
+    if(!localStorage.getItem("loggedUser")){
+      alert("🚫 Please login first!");
+      window.location.href = "login.html";
+    }
+  </script>
+</head>
+
+<body class="weather-page">
+<!-- ✅ Navigation Bar -->
+<nav class="navbar">
+  <h2 class="nav_title">আবহাওয়া</h2>
+
+  <div class="nav_search">
+    <input type="text" id="cityInput" placeholder="শহরের নাম লিখুন...">
+    <button id="searchBtn">খুঁজুন 🔍</button>
+  </div>
+
+  <button class="logout-btn" onclick="logout()">Logout</button>
+</nav>
+
+<!-- ✅ Weather Title Below Navbar -->
+<h1 class="main_title">আজকের আবহাওয়া</h1>
+
+<div class="weather-container" id="weatherContainer"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
