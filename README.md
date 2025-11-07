@@ -40,4 +40,4 @@ A **frontend-only weather application** with user authentication. Users can regi
 ---
 
 ## 🔹 Website Link
-   https://sage-baklava-eb58d2.netlify.app/
+   https://eloquent-malasada-2d435c.netlify.app/
