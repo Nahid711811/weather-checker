@@ -1,45 +1,3 @@
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Login</title>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
-
-<form id="loginForm" class="box">
-  <h2>🔐 Welcome Back</h2>
-
-  <input type="email" id="email" placeholder="Email Address" required>
-  <input type="password" id="password" placeholder="Password" required>
-
-  <button type="submit">Login</button>
-  <p>Don't have an account? <a href="register.html">Sign Up</a></p>
-</form>
-
-<script>
-document.getElementById("loginForm").addEventListener("submit", function(e){
-  e.preventDefault();
-
-  let users = JSON.parse(localStorage.getItem("users")) || [];
-
-  let email = document.getElementById("email").value.trim();
-  let pass = document.getElementById("password").value.trim();
-
-  let validUser = users.find(u => u.email === email && u.password === pass);
-
-  if(validUser){
-    localStorage.setItem("loggedUser", JSON.stringify(validUser));
-    alert("✅ Login Successful!");
-    window.location.href = "home.html"; 
-  } else {
-    alert("❌ Incorrect email or password");
-  }
-});
-</script>
-
-</body>
-</html> -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,13 +12,19 @@ document.getElementById("loginForm").addEventListener("submit", function(e){
     <h2>🔐 Welcome Back</h2>
 
     <input type="email" id="email" placeholder="Email Address" required>
-    <input type="password" id="password" placeholder="Password" required>
+
+    <!-- 👁️ Password input with toggle -->
+    <div class="password-field">
+      <input type="password" id="password" placeholder="Password" required>
+      <span class="togglePassword" onclick="togglePassword('password', this)">👁️</span>
+    </div>
 
     <button type="submit">Login</button>
     <p>Don't have an account? <a href="register.html">Sign Up</a></p>
   </form>
 
   <script>
+    // 🧠 Login authentication
     document.getElementById("loginForm").addEventListener("submit", function(e){
       e.preventDefault();
 
@@ -74,11 +38,23 @@ document.getElementById("loginForm").addEventListener("submit", function(e){
       if(validUser){
         localStorage.setItem("loggedUser", JSON.stringify(validUser));
         alert("✅ Login Successful!");
-        window.location.href = "home.html";
+        window.location.href = "index.html";
       } else {
         alert("❌ Incorrect email or password");
       }
     });
+
+    // 👁️ Toggle password visibility
+    function togglePassword(id, icon) {
+      const input = document.getElementById(id);
+      if (input.type === "password") {
+        input.type = "text";
+        icon.textContent = "🙈";
+      } else {
+        input.type = "password";
+        icon.textContent = "👁️";
+      }
+    }
   </script>
 </body>
 </html>

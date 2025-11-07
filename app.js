@@ -5,6 +5,19 @@ const cityInput = document.getElementById("cityInput");
 
 const defaultCities = ["Dhaka","Chittagong","Khulna","Rajshahi","Sylhet","Barisal","Rangpur","Mymensingh"];
 
+// 🏠 Home button (created dynamically)
+const homeBtn = document.createElement("button");
+homeBtn.innerHTML = "🏠 Home";
+homeBtn.classList.add("home-btn");
+homeBtn.style.display = "none"; // hidden by default
+document.querySelector(".navbar").appendChild(homeBtn);
+
+homeBtn.onclick = () => {
+  cityInput.value = "";
+  loadDefaultCities();
+  homeBtn.style.display = "none"; // hide after going home
+};
+
 async function getWeather(city) {
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${city},BD&units=metric&appid=${apiKey}`;
   const res = await fetch(url);
@@ -37,9 +50,12 @@ searchBtn.onclick = () => {
   if (!city) return alert("⚠️ শহরের নাম লিখুন!");
   container.innerHTML = "";
   getWeather(city);
+  homeBtn.style.display = "inline-block"; // show home button after search
 };
 
-cityInput.onkeypress = e => { if (e.key === "Enter") searchBtn.click(); };
+cityInput.onkeypress = e => { 
+  if (e.key === "Enter") searchBtn.click(); 
+};
 
 loadDefaultCities();
 
@@ -49,3 +65,21 @@ function logout(){
   alert("✅ Logged out!");
   window.location.href = "login.html";
 }
+
+// 🧍 Show logged-in username beside Logout
+window.addEventListener("DOMContentLoaded", () => {
+  const loggedUser = JSON.parse(localStorage.getItem("loggedUser"));
+  const userNameEl = document.getElementById("userName");
+
+  function shortenName(name, maxLength = 15) {
+    return name.length > maxLength ? name.slice(0, maxLength) + "..." : name;
+  }
+
+  if (loggedUser && loggedUser.name) {
+    const shortName = shortenName(loggedUser.name);
+    userNameEl.textContent = `👤 ${shortName}`;
+    userNameEl.title = loggedUser.name;
+  } else {
+    userNameEl.textContent = "👤 অতিথি";
+  }
+});

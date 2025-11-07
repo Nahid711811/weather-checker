@@ -18,15 +18,19 @@
 <body class="weather-page">
 <!-- ✅ Navigation Bar -->
 <nav class="navbar">
-  <h2 class="nav_title">আবহাওয়া</h2>
+  <a href="index.html" class="nav_title">আবহাওয়া</a>
 
   <div class="nav_search">
     <input type="text" id="cityInput" placeholder="শহরের নাম লিখুন...">
     <button id="searchBtn">খুঁজুন 🔍</button>
   </div>
 
-  <button class="logout-btn" onclick="logout()">Logout</button>
+  <div class="user_section">
+    <span id="userName"></span>
+    <button class="logout-btn" onclick="logout()">Logout</button>
+  </div>
 </nav>
+
 
 <!-- ✅ Weather Title Below Navbar -->
 <h1 class="main_title">আজকের আবহাওয়া</h1>

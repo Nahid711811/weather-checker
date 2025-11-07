@@ -140,6 +140,21 @@ body.weather-page {
     font-size: 40px; 
   }
 }
+.user_section {
+  display: flex;
+  gap:10px;
+  justify-content:space-evenly;
+  align-items: center;
+  color: white;
+  font-weight: 600;
+}
+@media(max-width:425px){
+  .user_section{
+    display: flex;
+    gap:20px;
+  }
+}
+
 /* Weather Grid */
 .weather-container {
   display: grid;
@@ -164,7 +179,7 @@ body.weather-page {
 
   box-shadow: 0px 8px 25px rgba(0,0,0,0.15);
   transition: all 0.3s ease;
-  cursor: pointer;
+  /* cursor: pointer; */
   transform: translateY(0);
 }
 
@@ -231,6 +246,11 @@ body.weather-page {
   color: #fff;
   white-space: nowrap;
 }
+@media (min-width:320px)and (max-width:425px){
+  .nav_title{
+    display: none;
+  }
+}
 /* Search Bar Styling */
 .nav_search {
   display: flex;
@@ -291,6 +311,28 @@ body.weather-page {
 .logout-btn:hover {
   background: #e60032;
 }
+/* 🏠 Home Button */
+.home-btn {
+  padding: 10px;
+  border: none;
+  background: linear-gradient(45deg, #28a745, #00c851);
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+.home-btn:hover {
+  transform: scale(1.05);
+  background: linear-gradient(45deg, #34d058, #00e676);
+}
+
+@media(max-width:650px){
+  .home-btn{
+    width: 50%;
+  }
+}
 
 /* 📱 Correct Mobile Layout */
 @media(max-width: 650px) {
@@ -305,8 +347,15 @@ body.weather-page {
     text-align: center;
     width: 100%;
     font-size: 22px;
+    font-weight: 700;
+    white-space: nowrap;
+    text-decoration: none;
+    cursor: pointer;
   }
-
+.nav_title:hover {
+  text-decoration: underline; 
+  opacity: 0.9;             
+}
   .nav_search {
     width: 100%;
     display: flex;
@@ -325,8 +374,34 @@ body.weather-page {
   }
 
   .logout-btn {
-    width: 100%;
+    width: 50%;
     order: 3; /* logout always at bottom */
   }
 }
 
+/* 👁️ Password toggle field */
+.password-field {
+  position: relative;
+  width: 100%;
+}
+
+.password-field input {
+  width: 100%;
+  padding-right: 40px; /* space for the eye icon */
+}
+
+.togglePassword {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  user-select: none;
+  font-size: 18px;
+  opacity: 0.7;
+  transition: 0.2s;
+}
+
+.togglePassword:hover {
+  opacity: 1;
+}
